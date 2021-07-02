@@ -1,7 +1,5 @@
 import torch
 from torch import nn
-from torchsummary import summary
-from library.utils import DataLoader, Utils
 
 
 class LeNet(nn.Module):
@@ -29,14 +27,3 @@ class LeNet(nn.Module):
         x = torch.flatten(x, 1)
         x = self.classifier(x)
         return x
-
-
-if __name__ == '__main__':
-    net = LeNet()
-    # summary(net, (1, 28, 28))
-
-    batch_size = 256
-    train_iter, test_iter = DataLoader().load_data_fashion_mnist(batch_size=batch_size)
-
-    lr, num_epochs = 0.9, 10
-    Utils.train(net, train_iter, test_iter, num_epochs, lr, Utils.try_gpu())
