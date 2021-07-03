@@ -5,3 +5,4 @@
 |LeNet|[lenet.py](./models/lenet.py)|[lenet.ipynb](./notebook/lenet.ipynb)|86.9%|
 |AlexNet|[alexnet.py](./models/alexnet.py)|[alexnet.ipynb](./notebook/alexnet.ipynb)|89.9%|
 |VGG|[vgg.py](./models/vgg.py)|[vgg.ipynb](./notebook/vgg.ipynb)|91.4%|
+|NIN|[nin.py](./models/nin.py)|[nin.ipynb](./notebook/nin.ipynb)||
