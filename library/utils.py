@@ -65,8 +65,7 @@ class Utils:
                 train_l = metric[0] / metric[2]
                 train_acc = metric[1] / metric[2]
                 if (i + 1) % (num_batches // 5) == 0 or i == num_batches - 1:
-                    animator.add(epoch + (i + 1) / num_batches,
-                                 (train_l, train_acc, None))
+                    animator.add(epoch + (i + 1) / num_batches, (train_l, train_acc, None))
             test_acc = Utils.evaluate_accuracy_gpu(net, test_iter)
             animator.add(epoch + 1, (None, None, test_acc))
         print(f'loss {train_l:.3f}, train acc {train_acc:.3f}, '
