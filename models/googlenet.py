@@ -28,10 +28,9 @@ class GoogLeNet(nn.Module):
             Inception(832, c1=384, c2=(192, 384), c3=(48, 128), c4=128)
         )
         self.classifier = nn.Sequential(
-            nn.AvgPool2d(kernel_size=7, stride=1),
+            nn.AdaptiveAvgPool2d((1, 1)),
             nn.Flatten(),
-            nn.Linear(1024, num_class),
-            nn.Softmax(dim=1)
+            nn.Linear(1024, num_class)
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
