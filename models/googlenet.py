@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from common.inception import Inception
+from models.common.inception import Inception
 
 
 class GoogLeNet(nn.Module):
