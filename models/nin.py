@@ -3,10 +3,10 @@ from torch import nn
 
 
 class NIN(nn.Module):
-    def __init__(self, num_class: int = 10) -> None:
+    def __init__(self, in_channels: int = 1, num_class: int = 10) -> None:
         super().__init__()
         self.features = nn.Sequential(
-            self.nin_block(1, 96, kernel_size=11, strides=4, padding=0),
+            self.nin_block(in_channels, 96, kernel_size=11, strides=4, padding=0),
             nn.MaxPool2d(3, stride=2),
             self.nin_block(96, 256, kernel_size=5, strides=1, padding=2),
             nn.MaxPool2d(3, stride=2),

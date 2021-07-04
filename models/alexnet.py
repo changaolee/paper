@@ -3,7 +3,7 @@ from torch import nn
 
 
 class AlexNet(nn.Module):
-    def __init__(self, num_class: int = 10) -> None:
+    def __init__(self, in_channels: int = 1, num_class: int = 10) -> None:
         super().__init__()
 
         # 由于早期 GPU 显存有限，原版的 AlexNet 采用了双数据流设计，使得每个 GPU 只负责存储和计算模型的一半参数。
@@ -12,7 +12,7 @@ class AlexNet(nn.Module):
             # 这里，我们使用一个 11 x 11 的更大窗口来捕捉对象。
             # 同时，步幅为 4，以减少输出的高度和宽度。
             # 另外，输出通道的数目远大于 LeNet。
-            nn.Conv2d(1, 96, kernel_size=11, stride=4, padding=1),
+            nn.Conv2d(in_channels, 96, kernel_size=11, stride=4, padding=1),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=3, stride=2),
             # 减小卷积窗口，使用填充为 2 来使得输入与输出的高和宽一致，且增大输出通道数

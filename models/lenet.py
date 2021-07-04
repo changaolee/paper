@@ -3,14 +3,14 @@ from torch import nn
 
 
 class LeNet(nn.Module):
-    def __init__(self, num_class: int = 10) -> None:
+    def __init__(self, in_channels: int = 1, num_class: int = 10) -> None:
         super().__init__()
 
         # 特征提取包括两个卷积层。
         # 每个卷积块中的基本单元是一个卷积层、一个 sigmoid 激活函数和平均池化层。
         # 注意，虽然 ReLU 和最大池化层更有效，但它们在 20 世纪 90 年代还没有出现。
         self.features = nn.Sequential(
-            nn.Conv2d(1, 6, kernel_size=5, padding=2),
+            nn.Conv2d(in_channels, 6, kernel_size=5, padding=2),
             nn.Sigmoid(),
             nn.AvgPool2d(kernel_size=2, stride=2),
             nn.Conv2d(6, 16, kernel_size=5),

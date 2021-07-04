@@ -3,14 +3,13 @@ from torch import nn
 
 
 class VGG(nn.Module):
-    def __init__(self, conv_arch: tuple = None, num_class: int = 10) -> None:
+    def __init__(self, in_channels: int = 1, conv_arch: tuple = None, num_class: int = 10) -> None:
         super().__init__()
 
         if not conv_arch:
             conv_arch = ((1, 64), (1, 128), (2, 256), (2, 512), (2, 512))
 
         conv_blks = []
-        in_channels = 1
         for (num_convs, out_channels) in conv_arch:
             conv_blks.append(self.vgg_block(num_convs, in_channels, out_channels))
             in_channels = out_channels
