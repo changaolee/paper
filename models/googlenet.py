@@ -30,7 +30,8 @@ class GoogLeNet(nn.Module):
         self.classifier = nn.Sequential(
             nn.AvgPool2d(kernel_size=7, stride=1),
             nn.Flatten(),
-            nn.Linear(1024, num_class)
+            nn.Linear(1024, num_class),
+            nn.Softmax(dim=1)
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
